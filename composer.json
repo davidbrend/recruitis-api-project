@@ -5,6 +5,10 @@
             "Davebrend\\RecruitisApiProject\\": "src/"
         }
     },
+    "type": "library",
+    "description": "Recruitis API package",
+    "keywords": ["recruitis","api"],
+    "license": "MIT",
     "authors": [
         {
             "name": "David Brend",
