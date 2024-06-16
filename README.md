@@ -1,7 +1,9 @@
 
 # Recruitis API Project
 
-Welcome to the **Recruitis API Project**! This project is designed as a composer package to be integrated into Symfony projects, providing a robust API client for interacting with the Recruitis platform. Below, you'll find a comprehensive guide on how to set up, use, and extend this package.
+Welcome to the **Recruitis API Project**! This project is designed as a composer package to be integrated into Symfony projects, providing a robust API client for interacting with the Recruitis platform. Below, you'll find a comprehensive guide on how to set up, use, and extend this package. 
+
+[Official API Documentation](https://docs.recruitis.io/api/#section/API-dokumentace-pro-system-Recruitis.io)
 
 ## Table of Contents
 - [Installation](#installation)
