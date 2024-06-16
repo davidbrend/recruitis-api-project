@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": "^8.1",
-        "symfony/framework-bundle": "^5.0 || ^6.0",
+        "symfony/framework-bundle": "v7.1.*",
         "guzzlehttp/guzzle": "*",
         "nesbot/carbon": "^3.5",
         "symfony/yaml": "^7.1"
