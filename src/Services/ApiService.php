@@ -4,7 +4,6 @@ namespace Davebrend\RecruitisApiProject\Services;
 
 
 use Davebrend\RecruitisApiProject\Client\Client;
-use Davebrend\RecruitisApiProject\Dtos\Job;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
 
