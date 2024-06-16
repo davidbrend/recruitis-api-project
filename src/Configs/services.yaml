@@ -1,0 +1,20 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Davebrend\RecruitisApiProject\Factories\ClientFactory:
+    arguments:
+      $apiToken: '%recruitis_api.api_token%'
+
+  GuzzleHttp\ClientInterface:
+    factory: ['@Davebrend\RecruitisApiProject\Factories\ClientFactory', 'createClient']
+
+  Davebrend\RecruitisApiProject\Facades\JobFacade:
+    public: true
+    arguments:
+      $recruitisService: '@Davebrend\RecruitisApiProject\Services\ApiService'
+
+  Davebrend\RecruitisApiProject\Services\ApiService: ~
+  Davebrend\RecruitisApiProject\Client\Query: ~
