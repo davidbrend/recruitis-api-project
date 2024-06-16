@@ -11,16 +11,11 @@ class RecruitisApiConfig implements ConfigurationInterface
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('recruitis_api');
-        $rootNode = $treeBuilder->getRootNode();
 
-        if (method_exists($rootNode, 'children')) {
-            $rootNode
-                ->children()
-                ->scalarNode('api_token')
-                ->defaultNull()
-                ->end()
-                ->end();
-        }
+        $treeBuilder->getRootNode()
+            ->children()
+            ->scalarNode('api_token')->defaultNull()->end()
+            ->end();
 
         return $treeBuilder;
     }
