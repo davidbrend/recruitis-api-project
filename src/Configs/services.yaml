@@ -16,5 +16,12 @@ services:
     arguments:
       $recruitisService: '@Davebrend\RecruitisApiProject\Services\ApiService'
 
-  Davebrend\RecruitisApiProject\Services\ApiService: ~
+  Davebrend\RecruitisApiProject\Services\ApiService:
+    arguments:
+      $client: '@GuzzleHttp\ClientInterface'
+
+  Davebrend\RecruitisApiProject\Client\Client:
+    arguments:
+      $client: '@GuzzleHttp\ClientInterface'
+
   Davebrend\RecruitisApiProject\Client\Query: ~
