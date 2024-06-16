@@ -25,7 +25,7 @@ This will add the package to your Symfony project and make it available for use.
 After installation, configure the package by setting the necessary environment variables. These typically include API credentials and endpoint URLs. Add the following to your `.env` file:
 
 ```
-RECRUITIS_API_KEY=your_api_key
+RECRUITIS_API_TOKEN=your_api_token
 ```
 
 Definition in `services.yaml` file:
