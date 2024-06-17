@@ -18,10 +18,10 @@ services:
 
   Davebrend\RecruitisApiProject\Services\ApiService:
     arguments:
-      $client: '@Davebrend\RecruitisApiProject\Client\Client'
+      $client: '@Davebrend\RecruitisApiProject\Clients\Client'
 
-  Davebrend\RecruitisApiProject\Client\Client:
+  Davebrend\RecruitisApiProject\Clients\Client:
     arguments:
       $client: '@GuzzleHttp\ClientInterface'
 
-  Davebrend\RecruitisApiProject\Client\Query: ~
+  Davebrend\RecruitisApiProject\Clients\Query: ~
