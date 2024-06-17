@@ -1,6 +1,6 @@
 <?php
 
-namespace Davebrend\RecruitisApiProject\Client;
+namespace Davebrend\RecruitisApiProject\Clients;
 
 use Davebrend\RecruitisApiProject\Enums\Query\OrderByEnum;
 use Davebrend\RecruitisApiProject\Enums\Query\TextLanguageEnum;

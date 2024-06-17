@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\DI;
+namespace Tests\DI;
 
 use Davebrend\RecruitisApiProject\DI\RecruitisApiExtension;
 use PHPUnit\Framework\TestCase;
