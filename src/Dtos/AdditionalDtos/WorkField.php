@@ -1,10 +1,10 @@
 <?php
 
-namespace Davebrend\RecruitisApiProject\Dtos;
+namespace Davebrend\RecruitisApiProject\Dtos\AdditionalDtos;
 
 use Davebrend\RecruitisApiProject\Base\BaseDto;
 
-class Employment extends BaseDto
+class WorkField extends BaseDto
 {
     private int $id;
     private string $name;
@@ -14,7 +14,7 @@ class Employment extends BaseDto
         return $this->id;
     }
 
-    public function setId(int $id): Employment
+    public function setId(int $id): WorkField
     {
         $this->id = $id;
         return $this;
@@ -25,7 +25,7 @@ class Employment extends BaseDto
         return $this->name;
     }
 
-    public function setName(string $name): Employment
+    public function setName(string $name): WorkField
     {
         $this->name = $name;
         return $this;

@@ -27,16 +27,30 @@ class ApiService
             ->setUrl(self::RECRUITIS_API_V2_URL . '/jobs')
             ->setQueryParams($queryParams)
             ->doRequest();
-        return $this->getDataPayloadFromResponse($response);
+        return $this->getValidatedDataFromResponse($response)['payload']; // payload key should exists now
     }
 
     /**
-     * @param ResponseInterface $response
-     * @return array<mixed>
-     * @throws \JsonException
+     * @param array<string, mixed> $queryParams
+     * @return mixed[]
      * @throws RecruitisApiException
+     * @throws \JsonException
      */
-    protected function getDataPayloadFromResponse(ResponseInterface $response): array
+    public function getJobsData(array $queryParams = []): array
+    {
+        $response = $this->client->setMethod(Client::REQUEST_GET_METHOD)
+            ->setUrl(self::RECRUITIS_API_V2_URL . '/jobs')
+            ->setQueryParams($queryParams)
+            ->doRequest();
+        return $this->getValidatedDataFromResponse($response);
+    }
+
+    /**
+     * @throws RecruitisApiException
+     * @throws \JsonException
+     * @return mixed[]
+     */
+    protected function getValidatedDataFromResponse(ResponseInterface $response): array
     {
         $data = json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
         if (count($data) === 0) {
@@ -55,7 +69,6 @@ class ApiService
             throw new RecruitisApiException('Invalid payload data');
         }
 
-        return $data['payload'];
+        return $data;
     }
-
 }
