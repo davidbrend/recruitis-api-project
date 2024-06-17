@@ -31,16 +31,16 @@ class Job extends BaseDto
     private array $education = [];
     private ?bool $disability = null;
     private ?Details $details = null;
-    private Personalist $personalist;
-    private Contact $contact;
+    private ?Personalist $personalist = null;
+    private ?Contact $contact = null;
     /** @var Employee[] $sharing */
     private array $sharing = [];
     /** @var Address[] $addresses  */
     private array $addresses = [];
     /** @var Employment[] $employment */
     private array $employment = [];
-    private Stats $stats;
-    private Salary $salary;
+    private ?Stats $stats = null;
+    private ?Salary $salary = null;
     private string $edit_link;
     private string $public_link;
 
@@ -274,7 +274,7 @@ class Job extends BaseDto
         return $this;
     }
 
-    public function getPersonalist(): Personalist
+    public function getPersonalist(): ?Personalist
     {
         return $this->personalist;
     }
@@ -285,7 +285,7 @@ class Job extends BaseDto
         return $this;
     }
 
-    public function getContact(): Contact
+    public function getContact(): ?Contact
     {
         return $this->contact;
     }
@@ -350,7 +350,7 @@ class Job extends BaseDto
         return $this;
     }
 
-    public function getStats(): Stats
+    public function getStats(): ?Stats
     {
         return $this->stats;
     }
@@ -361,7 +361,7 @@ class Job extends BaseDto
         return $this;
     }
 
-    public function getSalary(): Salary
+    public function getSalary(): ?Salary
     {
         return $this->salary;
     }
