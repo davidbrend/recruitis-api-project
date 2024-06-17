@@ -52,7 +52,7 @@ Here's a simple example of how to use the Recruitis API client in your Symfony p
 
 ```php
 
-use Davebrend\RecruitisApiProject\Client\Query;
+use Davebrend\RecruitisApiProject\Clients\Query;
 use Davebrend\RecruitisApiProject\Facades\JobFacade;
 use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
