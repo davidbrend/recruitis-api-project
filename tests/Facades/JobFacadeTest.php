@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Tests\Facades;
+namespace Tests\Facades;
 
-use Davebrend\RecruitisApiProject\Client\Query;
+use Davebrend\RecruitisApiProject\Clients\Query;
 use Davebrend\RecruitisApiProject\Dtos\Job;
+use Davebrend\RecruitisApiProject\Exceptions\RecruitisApiException;
 use Davebrend\RecruitisApiProject\Services\ApiService;
 use Davebrend\RecruitisApiProject\Facades\JobFacade;
-use GuzzleHttp\Exception\GuzzleException;
 use PHPUnit\Framework\TestCase;
 
 class JobFacadeTest extends TestCase
 {
     /**
-     * @throws GuzzleException
-     * @throws \JsonException
+     * @throws \JsonException|RecruitisApiException
      */
     public function testGetJobsByQuery(): void
     {
@@ -25,8 +24,13 @@ class JobFacadeTest extends TestCase
             ->willReturn([]);
 
         $apiService->expects($this->once())
-            ->method('getJobsData')
-            ->willReturn(['payload' => [['job_id' => 1, 'title' => 'Test Job']]]);
+            ->method('getJobsDataPayload')
+            ->willReturn([
+                [
+                    'job_id' => 1,
+                    'title' => 'Test Job'
+                ]
+            ]);
 
         $jobFacade = new JobFacade($apiService);
         $jobs = $jobFacade->getJobsByQuery($query);

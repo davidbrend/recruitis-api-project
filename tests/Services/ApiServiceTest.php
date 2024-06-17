@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Tests\Services;
+namespace Tests\Services;
 
-use Davebrend\RecruitisApiProject\Client\Client;
+use Davebrend\RecruitisApiProject\Clients\Client;
+use Davebrend\RecruitisApiProject\Exceptions\RecruitisApiException;
 use Davebrend\RecruitisApiProject\Services\ApiService;
 use GuzzleHttp\Exception\GuzzleException;
 use PHPUnit\Framework\TestCase;
@@ -14,6 +15,7 @@ class ApiServiceTest extends TestCase
     /**
      * @throws GuzzleException
      * @throws \JsonException
+     * @throws RecruitisApiException
      */
     public function testGetJobsData(): void
     {
@@ -40,7 +42,6 @@ class ApiServiceTest extends TestCase
             ->method('doRequest')
             ->willReturn($response);
 
-        // Mocking the response body to return a valid JSON string matching Job DTO structure
         $response->expects($this->once())
             ->method('getBody')
             ->willReturn($stream);
@@ -91,15 +92,18 @@ class ApiServiceTest extends TestCase
                         'edit_link' => 'http://example.com/edit',
                         'public_link' => 'http://example.com/public'
                     ]
+                ],
+                'meta' => [
+                    'code' => 'test',
+                    'message' => 'test message'
                 ]
             ], JSON_THROW_ON_ERROR));
 
         $apiService = new ApiService($client);
-        $data = $apiService->getJobsData();
+        $data = $apiService->getJobsDataPayload();
 
         $this->assertIsArray($data);
-        $this->assertArrayHasKey('payload', $data);
-        $this->assertEquals(1, $data['payload'][0]['job_id']);
-        $this->assertEquals('Test Job', $data['payload'][0]['title']);
+        $this->assertEquals(1, $data[0]['job_id']);
+        $this->assertEquals('Test Job', $data[0]['title']);
     }
 }

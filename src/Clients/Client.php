@@ -1,9 +1,9 @@
 <?php
 
-namespace Davebrend\RecruitisApiProject\Client;
+namespace Davebrend\RecruitisApiProject\Clients;
 
+use Davebrend\RecruitisApiProject\Exceptions\RequestException;
 use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
 
 class Client
@@ -20,11 +20,15 @@ class Client
     }
 
     /**
-     * @throws GuzzleException
+     * @throws RequestException
      */
     public function doRequest(): ResponseInterface
     {
-        return $this->client->request($this->method, $this->buildUrl());
+        try {
+            return $this->client->request($this->method, $this->buildUrl());
+        } catch (\Throwable $e) {
+            throw new RequestException('Error making request to Recruitis API', $e->getCode());
+        }
     }
 
     public function getMethod(): string

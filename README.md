@@ -85,12 +85,6 @@ The directory structure of the project is as follows:
   - **Services/**: Service classes for handling business logic.
   - **RecruitisApiProject.php**: Main class for the project.
 
-- **tests/**
-  - **DI/**: Tests related to dependency injection.
-  - **Facades/**: Tests for facades.
-  - **Factories/**: Factory class tests.
-  - **Services/**: Tests for service classes.
-
 ## Testing
 
 This project uses PHPUnit for testing. To run the tests, use the following command:
@@ -101,7 +95,7 @@ vendor/bin/phpunit
 
 or
 
-```
+```bash
 composer run run-tests
 ```
 
