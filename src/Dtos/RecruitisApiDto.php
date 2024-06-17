@@ -13,7 +13,7 @@ class RecruitisApiDto
 
     public function addJob(Job $job): self
     {
-        $this->jobs[] = $job;
+        $this->jobs[$job->getJobId()] = $job;
         return $this;
     }
 
