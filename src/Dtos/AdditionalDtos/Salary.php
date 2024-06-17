@@ -1,6 +1,6 @@
 <?php
 
-namespace Davebrend\RecruitisApiProject\Dtos;
+namespace Davebrend\RecruitisApiProject\Dtos\AdditionalDtos;
 
 use Davebrend\RecruitisApiProject\Base\BaseDto;
 use Davebrend\RecruitisApiProject\Enums\CurrencyEnum;

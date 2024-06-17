@@ -1,11 +1,11 @@
 <?php
 
-namespace Davebrend\RecruitisApiProject\Dtos;
+namespace Davebrend\RecruitisApiProject\Dtos\AdditionalDtos;
 
+use Carbon\Carbon;
 use Davebrend\RecruitisApiProject\Base\BaseDto;
 use Davebrend\RecruitisApiProject\Enums\AccessStateEnum;
 use Davebrend\RecruitisApiProject\Enums\Query\TextLanguageEnum;
-use Carbon\Carbon;
 
 class Job extends BaseDto
 {
