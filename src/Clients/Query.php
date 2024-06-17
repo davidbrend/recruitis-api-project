@@ -10,8 +10,12 @@ use Carbon\Carbon;
 
 class Query
 {
-    private ?int $limit = null; // default: 10, max <= 50
-    private ?int $page = null; // default: 1
+    protected const LIMIT_MAX_VALUE = 50;
+    protected const LIMIT_DEFAULT_VALUE = 10;
+    protected const PAGE_DEFAULT_VALUE = 1;
+
+    private ?int $limit = self::LIMIT_DEFAULT_VALUE; // default: 10, max <= 50
+    private ?int $page = self::PAGE_DEFAULT_VALUE; // default: 1
     private ?bool $withAutomation = null; // 1 - on, 0 - off
     private ?TextLanguageEnum $textLanguage = null;
     /** @var int[] $workfieldIds  */
@@ -25,8 +29,8 @@ class Query
 
     /** @var int[] $channelIds  */
     private array $channelIds = [];
-    private ?OrderByEnum $orderBy = null; // default: OrderByEnum::DATE_CREATED;
-    private ?ActivityStateEnum $activityState = null; // default: ActivityStateEnum::ACTIVE_POSITION; -- TODO: BITMAP - should sum both states
+    private ?OrderByEnum $orderBy = OrderByEnum::DATE_CREATED; // default: OrderByEnum::DATE_CREATED;
+    private ?ActivityStateEnum $activityState = ActivityStateEnum::ACTIVE_POSITION; // default: ActivityStateEnum::ACTIVE_POSITION;
     private ?AccessStateEnum $accessState = null;
     private ?bool $withRewards = null; // 1 - on, 0 - off
     private ?Carbon $updatedFrom = null; // format: YYYY-mm-dd HH:mm:ss
@@ -37,9 +41,9 @@ class Query
         return $this->limit;
     }
 
-    public function setLimit(?int $limit): Query
+    public function setLimit(int $limit = self::LIMIT_DEFAULT_VALUE): Query
     {
-        $this->limit = $limit;
+        $this->limit = $limit >= self::LIMIT_MAX_VALUE ? self::LIMIT_MAX_VALUE : $this->limit;
         return $this;
     }
 
@@ -224,10 +228,10 @@ class Query
             'page' => $this->page,
             'with_automation' => $this->withAutomation,
             'text_language' => $this->textLanguage?->value,
-            'workfield_id' => $this->workfieldIds ? implode(',', $this->workfieldIds) : null,
-            'office_id' => $this->officeIds ? implode(',', $this->officeIds) : null,
-            'filter_id' => $this->filterIds ? implode(',', $this->filterIds) : null,
-            'channel_id' => $this->channelIds ? implode(',', $this->channelIds) : null,
+            'workfield_id' => $this->workfieldIds ?? null,
+            'office_id' => $this->officeIds ?? null,
+            'filter_id' => $this->filterIds ?? null,
+            'channel_id' => $this->channelIds ?? null,
             'order_by' => $this->orderBy?->value,
             'activity_state' => $this->activityState?->value,
             'access_state' => $this->accessState?->value,
