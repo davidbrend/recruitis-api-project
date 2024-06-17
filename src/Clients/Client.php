@@ -27,7 +27,7 @@ class Client
         try {
             return $this->client->request($this->method, $this->buildUrl());
         } catch (\Throwable $e) {
-            throw new RequestException('Error making request to Recruitis API', $e->getCode());
+            throw new RequestException($e->getMessage(), $e->getCode());
         }
     }
 

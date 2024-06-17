@@ -6,6 +6,7 @@ use Davebrend\RecruitisApiProject\Clients\Query;
 use Davebrend\RecruitisApiProject\Dtos\Job;
 use Davebrend\RecruitisApiProject\Exceptions\RecruitisApiException;
 use Davebrend\RecruitisApiProject\Services\ApiService;
+use ReflectionException;
 
 class JobFacade
 {
@@ -18,7 +19,7 @@ class JobFacade
      * @param Query $query
      * @return array<Job>
      * @throws \JsonException
-     * @throws RecruitisApiException
+     * @throws RecruitisApiException|ReflectionException
      */
     public function getJobsByQuery(Query $query): array
     {
