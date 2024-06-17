@@ -74,7 +74,7 @@ class JobFacadeTest extends TestCase
         $recruitisApiDto = $jobFacade->getRecruitisApiDtoByQuery($query);
 
         $this->assertCount(1, $recruitisApiDto->getJobs());
-        $this->assertEquals('Test Job', $recruitisApiDto->getJobs()[0]->getTitle());
+        $this->assertEquals('Test Job', $recruitisApiDto->getJobs()[1]->getTitle());
         $this->assertEquals('test', $recruitisApiDto->getMeta()->getCode());
         $this->assertEquals('test message', $recruitisApiDto->getMeta()->getMessage());
     }
