@@ -43,7 +43,7 @@ class Query
 
     public function setLimit(int $limit = self::LIMIT_DEFAULT_VALUE): Query
     {
-        $this->limit = $limit >= self::LIMIT_MAX_VALUE ? self::LIMIT_MAX_VALUE : $this->limit;
+        $this->limit = min($limit, self::LIMIT_MAX_VALUE);
         return $this;
     }
 
